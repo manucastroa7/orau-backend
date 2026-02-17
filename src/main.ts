@@ -8,6 +8,7 @@ async function bootstrap() {
   app.use(urlencoded({ extended: true, limit: '50mb' }));
   app.enableCors({
     origin: [
+      process.env.FRONTEND_URL,
       'http://localhost:5173',
       'https://www.orau.com.es',
       'https://orau.com.es',
