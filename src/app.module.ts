@@ -17,6 +17,7 @@ import { LeadsModule } from './leads/leads.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
+      url: process.env.DATABASE_URL, // Prioridad a la URL completa (Railway, etc.)
       host: process.env.DB_HOST || 'localhost',
       port: parseInt(process.env.DB_PORT || '5432', 10),
       username: process.env.DB_USER || 'postgres',
@@ -24,13 +25,13 @@ import { LeadsModule } from './leads/leads.module';
       database: process.env.DB_NAME || 'orgullo_austral',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // Auto-create tables (dev only)
+      ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false, // Descomentar para producción si es necesario
     }),
     CloudinaryModule,
     ProductsModule,
     AuthModule,
     UsersModule,
     CategoriesModule,
-    SalesModule,
     SalesModule,
     MailModule,
     LeadsModule
