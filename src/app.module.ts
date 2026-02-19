@@ -11,6 +11,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailModule } from './mail/mail.module';
 import { LeadsModule } from './leads/leads.module';
+import { SectionsModule } from './sections/sections.module';
 
 @Module({
   imports: [
@@ -50,7 +51,9 @@ import { LeadsModule } from './leads/leads.module';
     CategoriesModule,
     SalesModule,
     MailModule,
-    LeadsModule
+    MailModule,
+    LeadsModule,
+    SectionsModule
   ],
   controllers: [AppController],
   providers: [AppService],
