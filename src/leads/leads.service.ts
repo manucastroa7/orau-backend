@@ -25,4 +25,8 @@ export class LeadsService {
         await this.leadsRepository.update(id, { status });
         return this.leadsRepository.findOneByOrFail({ id });
     }
+
+    async remove(id: string): Promise<void> {
+        await this.leadsRepository.delete(id);
+    }
 }

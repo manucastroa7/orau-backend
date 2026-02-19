@@ -1,4 +1,4 @@
-import { Controller, Get, Patch, Param, Body, Post } from '@nestjs/common';
+import { Controller, Get, Patch, Param, Body, Post, Delete } from '@nestjs/common';
 import { LeadsService } from './leads.service';
 import { Lead } from './lead.entity';
 import { CreateLeadDto } from './dto/create-lead.dto';
@@ -20,5 +20,10 @@ export class LeadsController {
     @Patch(':id/status')
     updateStatus(@Param('id') id: string, @Body('status') status: string): Promise<Lead> {
         return this.leadsService.updateStatus(id, status);
+    }
+
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        return this.leadsService.remove(id);
     }
 }
