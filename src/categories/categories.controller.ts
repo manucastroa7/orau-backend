@@ -13,6 +13,11 @@ export class CategoriesController {
 
 
 
+    @Patch(':id')
+    update(@Param('id') id: string, @Body() category: Partial<Category>) {
+        return this.categoriesService.update(id, category);
+    }
+
     @Get()
     findAll() {
         return this.categoriesService.findAll();
