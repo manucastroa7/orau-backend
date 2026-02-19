@@ -23,6 +23,8 @@ export class CategoriesService {
         return this.categoriesRepository.findOneBy({ id });
     }
 
+
+
     async update(id: string, category: Partial<Category>): Promise<Category> {
         await this.categoriesRepository.update(id, category);
         return this.categoriesRepository.findOneByOrFail({ id });

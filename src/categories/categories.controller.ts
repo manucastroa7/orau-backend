@@ -11,10 +11,7 @@ export class CategoriesController {
         return this.categoriesService.create(category);
     }
 
-    @Patch(':id')
-    update(@Param('id') id: string, @Body() category: Partial<Category>) {
-        return this.categoriesService.update(id, category);
-    }
+
 
     @Get()
     findAll() {
