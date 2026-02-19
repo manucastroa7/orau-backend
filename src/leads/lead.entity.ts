@@ -15,6 +15,9 @@ export class Lead {
     message: string;
 
     @Column({ nullable: true })
+    phone: string;
+
+    @Column({ nullable: true })
     productName: string;
 
     @Column({ nullable: true })

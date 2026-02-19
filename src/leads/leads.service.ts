@@ -10,7 +10,7 @@ export class LeadsService {
         private leadsRepository: Repository<Lead>,
     ) { }
 
-    create(data: Partial<Lead>): Promise<Lead> {
+    async create(data: { name: string; email: string; message: string; productName?: string; productId?: string; status?: string; phone?: string }) {
         const lead = this.leadsRepository.create(data);
         return this.leadsRepository.save(lead);
     }

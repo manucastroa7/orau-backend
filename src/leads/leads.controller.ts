@@ -1,6 +1,7 @@
 import { Controller, Get, Patch, Param, Body, Post } from '@nestjs/common';
 import { LeadsService } from './leads.service';
 import { Lead } from './lead.entity';
+import { CreateLeadDto } from './dto/create-lead.dto';
 
 @Controller('leads')
 export class LeadsController {
@@ -12,7 +13,7 @@ export class LeadsController {
     }
 
     @Post()
-    create(@Body() lead: Partial<Lead>): Promise<Lead> {
+    create(@Body() lead: CreateLeadDto): Promise<Lead> {
         return this.leadsService.create(lead);
     }
 
