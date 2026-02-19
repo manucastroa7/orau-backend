@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Patch } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { Category } from './category.entity';
 
@@ -9,6 +9,11 @@ export class CategoriesController {
     @Post()
     create(@Body() category: Partial<Category>) {
         return this.categoriesService.create(category);
+    }
+
+    @Patch(':id')
+    update(@Param('id') id: string, @Body() category: Partial<Category>) {
+        return this.categoriesService.update(id, category);
     }
 
     @Get()
