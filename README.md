@@ -35,7 +35,7 @@ Esta es la API de ORAU, construida con **NestJS**. Proporciona los servicios nec
    ```
 
 ## 🔗 Enlaces Relacionados
-- [Repositorio Frontend](../frontend)
+- [Repositorio Frontend](https://github.com/manucastroa7/orau-frontend)
 
 ---
 Desarrollado para **Orgullo Austral**.
