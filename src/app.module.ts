@@ -12,6 +12,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MailModule } from './mail/mail.module';
 import { LeadsModule } from './leads/leads.module';
 import { SectionsModule } from './sections/sections.module';
+import { SizesModule } from './sizes/sizes.module';
 
 @Module({
   imports: [
@@ -53,7 +54,8 @@ import { SectionsModule } from './sections/sections.module';
     MailModule,
     MailModule,
     LeadsModule,
-    SectionsModule
+    SectionsModule,
+    SizesModule
   ],
   controllers: [AppController],
   providers: [AppService],

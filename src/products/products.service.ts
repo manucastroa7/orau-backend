@@ -22,7 +22,8 @@ export class ProductsService {
         return products.map(product => ({
             ...product,
             images: product.images || [],
-            category: product.categoryRelation ? product.categoryRelation.name : 'Sin Categoría'
+            category: product.categoryRelation ? product.categoryRelation.name : 'Sin Categoría',
+            sizes: product.sizesRelation ? product.sizesRelation.map(s => s.name) : []
         }));
     }
 
@@ -35,9 +36,13 @@ export class ProductsService {
         return this.productsRepository.save(newProduct);
     }
 
-    async update(id: string, product: Partial<Product>): Promise<Product | null> {
-        await this.productsRepository.update(id, product);
-        return this.productsRepository.findOneBy({ id });
+    async update(id: string, productData: Partial<Product>): Promise<Product | null> {
+        const product = await this.productsRepository.findOneBy({ id });
+        if (!product) return null;
+
+        const updatedProduct = this.productsRepository.merge(product, productData);
+        await this.productsRepository.save(updatedProduct);
+        return this.findAll().then(products => products.find(p => p.id === id) || null);
     }
 
     async remove(id: string): Promise<void> {

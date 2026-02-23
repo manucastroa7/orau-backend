@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 import { Category } from '../categories/category.entity';
+import { Size } from '../sizes/size.entity';
 
 @Entity()
 export class Product {
@@ -23,6 +24,10 @@ export class Product {
 
     @Column('simple-array', { nullable: true })
     images: string[];
+
+    @ManyToMany(() => Size, (size) => size.products, { eager: true })
+    @JoinTable()
+    sizesRelation: Size[];
 
     @ManyToOne(() => Category, (category) => category.products, { eager: true, nullable: true })
     categoryRelation: Category;
